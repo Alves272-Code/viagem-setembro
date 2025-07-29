@@ -1,33 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Surpresa 💌</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
       background: linear-gradient(to top right, #fffafc, #fef0f5);
+      overflow: hidden;
       font-family: 'Arial', sans-serif;
+    }
+
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 24px;
+      animation: fall 8s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(120vh);
+      }
     }
   </style>
 </head>
 <body class="flex items-center justify-center min-h-screen text-center p-4">
 
-  <div id="mensagem" class="text-3xl text-rose-600 font-semibold opacity-0 transition-opacity duration-500">
-    Tens correio para ti 💌
-    <br>
-    <a href="carta.html">
-      <button class="mt-6 px-6 py-3 bg-rose-500 text-white rounded-full text-lg hover:bg-rose-600 transition">
-        Abrir
-      </button>
-    </a>
+  <!-- Corações a cair -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+  <div>
+    <div id="contador" class="text-6xl font-bold text-rose-500"></div>
+    <div id="mensagem" class="text-3xl text-rose-600 font-semibold mt-6 opacity-0 transition-opacity duration-500">
+      Tens correio para ti 💌<br>
+      <a href="carta.html">
+        <button class="mt-6 px-6 py-3 bg-rose-500 text-white rounded-full text-lg hover:bg-rose-600 transition">
+          Abrir
+        </button>
+      </a>
+    </div>
   </div>
 
   <script>
-    setTimeout(() => {
-      document.getElementById("mensagem").classList.remove("opacity-0");
-    }, 5000);
+    let tempo = 5;
+    const contador = document.getElementById("contador");
+    const mensagem = document.getElementById("mensagem");
+
+    const intervalo = setInterval(() => {
+      contador.textContent = tempo;
+      tempo--;
+
+      if (tempo < 0) {
+        clearInterval(intervalo);
+        contador.remove();
+        mensagem.classList.remove("opacity-0");
+      }
+    }, 1000);
   </script>
 
 </body>
