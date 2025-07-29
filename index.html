@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contagem para Paris 💖</title>
+  <title>Paris, o nosso amor 💖</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(to top right, #ffe4ec, #fff0f5);
-      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to top right, #fffafc, #fef0f5);
       overflow-x: hidden;
     }
 
@@ -18,12 +17,17 @@
       font-family: 'Great Vibes', cursive;
     }
 
+    p, div, span {
+      font-family: 'Playfair Display', serif;
+    }
+
     .heart {
       position: fixed;
       top: -50px;
       color: #ff6b81;
-      font-size: 2rem;
+      font-size: 1.5rem;
       animation: fall linear infinite;
+      pointer-events: none;
     }
 
     @keyframes fall {
@@ -38,33 +42,31 @@
     }
   </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen text-rose-800 p-6 relative">
+<body class="flex flex-col items-center justify-center min-h-screen text-gray-800 p-6 relative">
 
-  <h1 class="text-6xl text-center mt-6 mb-4">Paris está à nossa espera 💌</h1>
+  <h1 class="text-6xl text-center text-rose-600 mt-10 mb-2">Marisa & [teu nome]</h1>
+  <p class="text-lg tracking-widest uppercase text-gray-500 mb-8">Contagem para Paris</p>
 
-  <div id="countdown" class="text-3xl font-semibold mb-10"></div>
+  <div id="countdown" class="text-2xl font-medium mb-10 text-rose-500"></div>
 
-  <!-- Carta -->
-  <div class="bg-white bg-opacity-90 shadow-xl rounded-xl p-8 max-w-2xl text-lg leading-relaxed border-2 border-rose-200 backdrop-blur-sm">
-    <p class="mb-4">
-      Minha princesa,
+  <!-- Carta estilo convite -->
+  <div class="bg-white bg-opacity-90 shadow-md rounded-xl px-10 py-12 max-w-2xl text-center border border-rose-200 backdrop-blur-sm">
+    <p class="text-xl mb-6 italic">
+      “Paris vai ser mágico, mas até lá… temos que nos aturar.” 💌
     </p>
-    <p class="mb-4">
-      Em Paris vai ser mágico, mas até lá… temos que nos aturar! 😅  
-      Prometo não te chatear (muito) — vá, só às vezes — e se conseguires sobreviver aos meus roncos,  
-      ganho direito a um beijo mesmo em frente à Torre Eiffel 💋
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+      Prometo tentar não te chatear (muito)... e se conseguires sobreviver aos meus roncos,  
+      ganho direito a um beijo mesmo em frente à Torre Eiffel.  
     </p>
-    <p class="mb-4">
-      Cada dia contigo é um capítulo novo da nossa história,  
-      e Paris vai ser um daqueles capítulos com estrelas, gargalhadas e abraços apertadinhos com frio nas mãos.
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+      Cada dia contigo é um capítulo novo,  
+      e este — o capítulo Paris — vai ser feito de gargalhadas, fotos tortas e croissants partilhados.
     </p>
-    <p class="mb-4">
-      Amo-te mais do que croissants quentinhos… e isso diz muito.
+    <p class="text-lg leading-relaxed text-gray-700">
+      Amo-te mais do que macarons… e tu sabes que isso é muito.  
     </p>
-    <p class="text-right">
-      Com amor,  
-      <strong>da tua chata favorita 💕</strong>
-    </p>
+
+    <p class="mt-8 text-right text-rose-500 font-semibold">Com amor, a tua chata favorita 💕</p>
   </div>
 
   <!-- Corações a cair -->
@@ -86,7 +88,7 @@
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      countdown.textContent = `Faltam ${days} dias, ${hours}h ${minutes}m ${seconds}s`;
+      countdown.textContent = `${days} dias, ${hours}h ${minutes}m ${seconds}s`;
     }
 
     updateCountdown();
