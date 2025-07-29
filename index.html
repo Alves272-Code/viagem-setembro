@@ -10,23 +10,25 @@
   <style>
     body {
       font-family: 'Great Vibes', cursive;
-      background: linear-gradient(to top right, #fbe0dc, #fde2ff);
+      background: linear-gradient(to top right, #fde2e4, #fff1f5);
     }
   </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen text-pink-800 p-4">
+<body class="flex flex-col items-center justify-center min-h-screen text-rose-800 p-6">
 
-  <h1 class="text-5xl text-center mt-6">Conto os dias para te levar a Paris 💕</h1>
+  <h1 class="text-5xl text-center mt-6">Paris está à nossa espera 💕</h1>
 
-  <div id="countdown" class="text-4xl mt-10 font-bold"></div>
+  <div id="countdown" class="text-4xl mt-8 font-bold"></div>
 
-  <p class="text-2xl mt-8 text-center max-w-xl">
-    Cada dia que passa é mais um passo até à nossa aventura. Paris vai ser só o início de tantas histórias bonitas que vamos viver. Obrigada por existires na minha vida, meu amor. ❤️
+  <p class="text-2xl mt-8 text-center max-w-2xl leading-relaxed">
+    Cada segundo que passa, o nosso sonho está mais perto.  
+    Em breve, estaremos de mãos dadas nas ruas de Paris, a viver o nosso amor onde até o céu parece suspirar connosco.  
+    Obrigada por sonhares isto comigo. ✨
   </p>
 
-  <div class="mt-10 flex gap-4 flex-wrap justify-center">
-    <img src="foto1.jpg" alt="Foto nossa" class="w-64 h-64 object-cover rounded-2xl shadow-lg"/>
-    <img src="foto2.jpg" alt="Foto nossa" class="w-64 h-64 object-cover rounded-2xl shadow-lg"/>
+  <div class="mt-10 flex flex-col md:flex-row gap-8 items-center">
+    <img src="https://cdn.pixabay.com/photo/2020/09/07/16/43/eiffel-tower-5552118_1280.jpg" alt="Paris" class="w-80 h-52 object-cover rounded-xl shadow-lg border-4 border-white">
+    <img src="https://cdn.pixabay.com/photo/2021/03/04/12/44/plane-6068233_1280.jpg" alt="Avião" class="w-80 h-52 object-cover rounded-xl shadow-lg border-4 border-white">
   </div>
 
   <script>
@@ -37,12 +39,17 @@
       const now = new Date();
       const diff = targetDate - now;
 
+      if (diff <= 0) {
+        countdown.textContent = "É hoje! ✈️❤️";
+        return;
+      }
+
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      countdown.textContent = `${days} dias, ${hours}h ${minutes}m ${seconds}s`;
     }
 
     updateCountdown();
